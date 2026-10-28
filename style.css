@@ -1,0 +1,145 @@
+:root {
+  --green: #009a73;
+  --deep: #005f4b;
+  --gold: #b78a0e;
+  --cream: #faf5e3;
+  --blue: #1f56a8;
+  --blue-bg: #eef3fb;
+  --orange: #e27a1b;
+  --orange-bg: #fff3e6;
+  --mint: #eef7f4;
+  --ink: #1d2b2a;
+  --line: #cfe3dc;
+  --bad: #b3261e;
+  --max: 980px;
+  --title: "Moul", "Khmer OS Muol", serif;
+  --body: "Noto Sans Khmer", "Khmer OS Battambang", system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; color: var(--ink); background: #fff; font: 400 1.1rem/1.9 var(--body); }
+p { margin: 0 0 .6em; }
+a { color: var(--deep); }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+
+/* Counters for Khmer lists: ១. ២.  and  ក. ខ. គ. ឃ. */
+@counter-style khmer-alpha { system: fixed; symbols: "ក" "ខ" "គ" "ឃ" "ង" "ច"; suffix: ". "; }
+
+/* ---------- Top bar ---------- */
+.topbar {
+  display: flex; align-items: center; gap: 1rem;
+  padding: .4rem 1rem; background: var(--deep); color: #fff; font-size: .95rem; line-height: 1.5;
+}
+.topbar-name { margin-right: auto; font-family: var(--title); font-size: .85rem; }
+.link-btn { background: none; border: 0; padding: 0; cursor: pointer; font: inherit; color: #fff; text-decoration: underline; text-underline-offset: 4px; }
+
+/* ---------- Slides ---------- */
+.slide { min-height: calc(100vh - 6.5rem); }
+.slide-head { background: var(--green); color: #fff; padding: .7rem 1.25rem; box-shadow: 0 2px 0 var(--deep); }
+.slide-head h2 { max-width: var(--max); margin: 0 auto; font: 400 clamp(1rem, 2.6vw, 1.45rem)/1.7 var(--title); }
+.slide-meta, .slide-body { max-width: var(--max); margin: 0 auto; padding-left: 1.25rem; padding-right: 1.25rem; }
+.slide-meta { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; min-height: 3.2rem; }
+.slide-body { padding-top: .5rem; padding-bottom: 2rem; }
+
+.badge { padding: .15rem 1rem; border-radius: 8px; color: #fff; font: 700 .95rem/1.6 system-ui, sans-serif; }
+.badge-ido { background: var(--blue); }
+.badge-wedo { background: var(--orange); }
+.badge-youdo { background: var(--deep); }
+
+.dots { display: flex; gap: .45rem; margin-left: auto; }
+.dots span { display: grid; place-items: center; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: #e4e8e7; color: #6b7a77; font-size: .8rem; line-height: 1; }
+.dots .done { background: #9fd5c6; color: #fff; }
+.dots .active { background: var(--deep); color: #fff; box-shadow: 0 0 0 3px #bfe3d8; }
+
+/* ---------- Boxes with a title tab ---------- */
+.box { --c: var(--gold); --bg: var(--cream); margin: 2.4rem 0 1.2rem; padding: 0 1.25rem .8rem; border: 2px solid var(--c); border-radius: 12px; background: var(--bg); }
+.box-mint { --c: var(--deep); --bg: var(--mint); }
+.box-blue { --c: var(--blue); --bg: var(--blue-bg); }
+.box h3 {
+  display: table; max-width: 100%; margin: -1.4rem 0 .6rem -.6rem; padding: .3rem 1rem;
+  border-radius: 10px; background: var(--c); color: #fff;
+  font: 400 clamp(.9rem, 2.2vw, 1.1rem)/1.8 var(--title);
+}
+.ico { display: inline-grid; place-items: center; width: 1.5rem; height: 1.5rem; margin-right: .6rem; border-radius: 50%; background: #fff; color: var(--c); font: 700 .85rem/1 system-ui, sans-serif; }
+.box-body p:last-child { margin-bottom: 0; }
+
+ol.num { list-style: khmer; }
+ol.alpha { list-style: khmer-alpha; }
+ol { margin: 0 0 .5rem; padding-left: 1.8rem; }
+ol li::marker { color: var(--deep); font-weight: 700; }
+ul.hand { list-style: none; margin: 0; padding: 0; }
+ul.hand li { position: relative; padding-left: 1.9rem; }
+ul.hand li::before { content: "☞"; position: absolute; left: 0; color: var(--deep); }
+.note, .example { font-weight: 700; }
+.o { color: var(--orange); }
+.b { color: var(--blue); }
+
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 2rem; }
+.tbl-wrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; background: #fff; }
+.tbl th, .tbl td { border: 2px solid #7a63b8; padding: .35rem .8rem; text-align: center; }
+.tbl th { background: #f3f0fa; }
+.tbl td:last-child { text-align: left; }
+.tbl .no { color: var(--bad); font-weight: 700; }
+.tbl .yes { color: #1d6b3a; font-weight: 700; }
+
+/* Summary banners */
+.sum { margin: 1.1rem 0; border-radius: 12px; overflow: hidden; border: 2px solid var(--c); background: #fff; }
+.sum h3 { margin: 0; padding: .3rem 1rem; text-align: center; color: #fff; background: var(--c); font: 400 1rem/1.8 var(--title); }
+.sum p { margin: 0; padding: .8rem 1.2rem; text-align: center; font-size: 1.2rem; }
+.sum-blue { --c: var(--blue); }
+.sum-orange { --c: var(--orange); }
+.sum-green { --c: var(--deep); }
+
+/* Title and closing slides */
+.slide-plain .slide-body { display: grid; place-items: center; min-height: calc(100vh - 7rem); padding-top: 2rem; }
+.title-slide { width: 100%; text-align: center; }
+.chapter { margin: 0 auto 3rem; padding: 1.4rem 1.5rem; max-width: 760px; border-radius: 12px; background: var(--green); color: #fff; box-shadow: 0 4px 0 var(--deep); font: 400 clamp(1rem, 2.8vw, 1.5rem)/1.9 var(--title); }
+.chapter p { margin: 0; }
+.title-slide h1 { margin: 0 0 1rem; color: var(--deep); font: 400 clamp(1.8rem, 6vw, 3.4rem)/1.5 var(--title); }
+.author { font: 400 1.3rem var(--title); color: var(--ink); }
+.closing { max-width: 760px; margin: 0; padding: 1.6rem 2rem; border: 2px solid var(--deep); border-radius: 14px; background: var(--mint); text-align: center; }
+.closing h3 { margin: 0 0 1rem; color: var(--deep); font: 400 1.25rem/1.8 var(--title); }
+.closing p { font-size: 1.3rem; margin: 0; }
+
+/* ---------- Slide controls ---------- */
+.controls {
+  position: sticky; bottom: 0; z-index: 5;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .55rem 1rem; background: #fff; border-top: 2px solid var(--line);
+}
+.nav-btn { min-width: 6.5rem; padding: .45rem 1.1rem; border: 0; border-radius: 8px; background: var(--deep); color: #fff; font: 700 1rem var(--body); cursor: pointer; }
+.nav-btn:disabled { background: #c9d4d1; cursor: default; }
+#counter { font-weight: 700; color: var(--deep); }
+
+/* ---------- Login and register ---------- */
+.auth-page { background: var(--mint); }
+.auth { max-width: 26rem; margin: 3rem auto; padding: 1.75rem 1.5rem; background: #fff; border: 2px solid var(--deep); border-radius: 14px; }
+.auth-brand { margin: 0 0 1rem; color: var(--deep); font: 400 .9rem/1.8 var(--title); }
+.auth h1 { margin: 0 0 .4rem; font: 400 1.5rem/1.7 var(--title); color: var(--deep); }
+.auth label { display: block; margin-bottom: .9rem; font-weight: 700; }
+.auth input { display: block; width: 100%; margin-top: .25rem; padding: .6rem .75rem; border: 2px solid var(--line); border-radius: 8px; font: 400 1rem var(--body); }
+.auth input:focus { border-color: var(--deep); outline: none; }
+.btn { display: inline-block; padding: .65rem 1.6rem; border: 0; border-radius: 8px; background: var(--deep); color: #fff; font: 700 1rem var(--body); cursor: pointer; }
+.btn:hover { background: #00473a; }
+.err { display: block; min-height: 1.2em; font-size: .9rem; font-weight: 400; color: var(--bad); }
+.notice { padding: .6rem 1rem; border-radius: 8px; font-weight: 700; }
+.notice.bad { background: #fbe9e7; color: var(--bad); }
+.auth-alt { margin: 1.25rem 0 0; }
+
+@media (max-width: 640px) {
+  body { font-size: 1.02rem; }
+  .cols { grid-template-columns: 1fr; }
+  .topbar-user { display: none; }
+  .slide-meta { flex-wrap: wrap; gap: .5rem; }
+  .box { padding: 0 .9rem .7rem; }
+}
+@media print {
+  .topbar, .controls { display: none; }
+  .slide[hidden] { display: block; }
+  .slide { page-break-after: always; min-height: 0; }
+}
+
+/* ---------- Password gate (single-file version) ---------- */
+#app[hidden], #gate[hidden], .notice[hidden] { display: none; }
